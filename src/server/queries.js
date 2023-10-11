@@ -1,7 +1,7 @@
-const { error } = require('console');
+
 const {Pool} = require('pg');
-let id = 25;
-let id2 = 24;
+const { v4 } = require ("uuid");
+
 
 const pool = new Pool({
   user: 'me',
@@ -25,7 +25,7 @@ const getAllEnveloppes = (req, res ) => {
 //POST new Enveloppe
 const createEnveloppe = (req, res) => {
     const {name, budget} = req.body;
-    id++;
+    const id = v4();
 
     pool.query('INSERT INTO enveloppes VALUES($1, $2, $3) RETURNING *',[id, name, budget], (error, result) => {
         if (error) {
@@ -90,8 +90,8 @@ const getTransactionsByEnveloppeId = (req, res) => {
 const createNewTransaction = (req, res, next) => {
   const env_id = req.params.env_id;
   const {description, amount} = req.body;
-  id2++;
-  pool.query('INSERT INTO transactions VALUES($1, $2, $3, $4)', [id2, env_id, description, amount], (error, result) => {
+  const id = v4();
+  pool.query('INSERT INTO transactions VALUES($1, $2, $3, $4)', [id, env_id, description, amount], (error, result) => {
     if (error) {
       throw error
     };

@@ -10,15 +10,18 @@ export const Form = () => {
     const dispatch = useDispatch();
 
     const onSubmit = (e) => {
+        const nameLowerCase = name.toLowerCase();
+        const nameToSend = nameLowerCase.charAt(0).toLocaleUpperCase() + nameLowerCase.slice(1);
+
         e.preventDefault();
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name : name,
+            body: JSON.stringify({ name : nameToSend,
                 budget : budget})
         };
         fetch('http://localhost:4000/newEnveloppe', requestOptions)
-        .then(() => dispatch(loadAllEnveloppes))
+        .then(() => dispatch(loadAllEnveloppes()))
         .then(() => navigate('/'))   
         .catch((error) => console.log(error));
        

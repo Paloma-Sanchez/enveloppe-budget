@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { loadTransactionsByEnveloppeId } from "../Features/TransactionList/transactionListSlice";
 
 export const DeleteTransactionButton = ({trans_id, env_id}) => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleClick = () => {
@@ -16,7 +15,6 @@ export const DeleteTransactionButton = ({trans_id, env_id}) => {
         .then(dispatch(loadTransactionsByEnveloppeId(env_id)))    
         .catch((error) => console.log(error));
         
-        //navigate('/');
     }
 
     return(

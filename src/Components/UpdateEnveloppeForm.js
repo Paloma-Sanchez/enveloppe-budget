@@ -1,20 +1,26 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loadAllEnveloppes } from "../Features/EnveloppeList/enveloppeListSlice";
 
-export const UpdateEnveloppeForm = ({env_id}) => {
+export const UpdateEnveloppeForm = ({env_id, name, setUpdateOn}) => {
     const navigate = useNavigate();
     const [updatedBudget, setUpdatedBudget] = useState('');
+    const dispatch = useDispatch();
 
-    const onSubmit = () => {
+    const onSubmit = (e) => {
+        e.preventDefault();
         const requestOptions = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({updatedBudget : updatedBudget})
         };
         fetch(`http://localhost:4000/enveloppes/${env_id}`, requestOptions)
-            .catch((error) => console.log(error));
+        .then(() => dispatch(loadAllEnveloppes()))
+        .then(() => navigate(`/${name}`))    
+        .catch((error) => console.log(error));
         
-        navigate('/');
+        setUpdateOn(false);
     }
 
     return(

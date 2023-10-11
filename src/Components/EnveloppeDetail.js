@@ -30,11 +30,11 @@ export const EnveloppeDetail = () => {
         <div>
             <div className="env-detail-header" >
                 <DeleteEnveloppeButton env_id = {id}/>
-                <button onClick={(e) => setUpdateOn(true)} className="env-detail-btn">Update this budget</button>
+                <button onClick={(e) => setUpdateOn(!updateOn)} className="env-detail-btn">Update this budget</button>
             </div>
-            <Enveloppe title = {category} amount = {budget} detail={true} updateOn = {updateOn} env_id={id}/>
+            <Enveloppe title = {category} amount = {budget} detail={true} updateOn = {updateOn} setUpdateOn={setUpdateOn} env_id={id}/>
             <TransactionList env_id = {id} />
-             <NewTransactionForm env_id={id} budget = {budget} />
+             <NewTransactionForm env_id={id} budget = {budget} name={category} />
           
         </div>
     )

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loadTransactionsByEnveloppeId } from "../Features/TransactionList/transactionListSlice";
+import { loadAllEnveloppes } from "../Features/EnveloppeList/enveloppeListSlice";
 
-export const NewTransactionForm = ({env_id, budget}) => {
+export const NewTransactionForm = ({env_id, budget, name}) => {
+    const navigate = useNavigate();
     const [description, setDescription] = useState('');
     const [amount, setAmount] = useState();
     const [addActivated, setAddActivated] = useState(false);
@@ -18,10 +20,15 @@ export const NewTransactionForm = ({env_id, budget}) => {
             body: JSON.stringify({ budget: budget, description: description, amount : amount})
         };
         fetch(`http://localhost:4000/enveloppes/${env_id}`, requestOptions)
-        .then(() => dispatch(loadTransactionsByEnveloppeId(env_id)) )   
+        .then(() => dispatch(loadTransactionsByEnveloppeId(env_id)) ) 
+        .then(() => dispatch(loadAllEnveloppes()))
+        .then(() => navigate(`/${name}`))   
         .catch((error) => console.log(error));
+
+        setDescription('');
+        setAmount('');
         setAddActivated(!addActivated);
-    }
+    };
 
     return (
         <div className="form-div" >
