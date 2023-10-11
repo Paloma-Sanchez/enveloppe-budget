@@ -11,3 +11,178 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/******** HEADER ********/
+
+.App-header {
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  font-size: calc(12px + 2vmin);
+  color: white;
+}
+
+.navlink {
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0 25px;
+}
+
+
+/******** HOME ********/
+
+.welcome{
+  text-align: center;
+  font-size: calc(40px + 2vmin);;
+  margin: 50px 50px;
+}
+
+.h2{
+  text-align: center;
+  font-size: calc(25px + 2vmin);;
+  margin: 50px 0;
+  padding: 30px 0;
+}
+
+
+/******** ENVELOPPES ********/
+
+.grid-container{
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr ;
+  gap: 15px;
+  
+  justify-items: center;
+  
+}
+
+.link{
+  text-decoration: none;
+  text-align: center;
+  
+}
+
+/******** ENVELOPPE LIST ********/
+.h3{
+  font-size: 30px;
+  color: black;
+  padding: 0 30px;
+}
+
+.env-budget{
+  font-size: 27px;
+  color: rgb(37, 34, 34);
+}
+
+/******** ENVELOPPE DETAIL ********/
+.budget{
+  text-align: center;
+  font-size: calc(25px + 2vmin);
+}
+
+.update-budget-form{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.env-detail-btn{
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+/******** TRANSACTIONS ********/
+.transaction-grid-container{
+  max-width: 900px ;
+  margin: 0 auto;
+  margin-bottom: 70px;
+}
+
+.transaction-grid{
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  grid-template-rows: 50px;
+  grid-auto-rows: 50px;
+  padding-left: 30px;
+  margin: 0 10px;
+  gap: 0;
+  align-items: center;
+  
+}
+
+.transaction-header{
+  font-size: 22px;
+  font-weight: bold;
+  border-bottom: 1px solid gray;
+  height: 100%;
+  padding: 10px 0 0 10px;
+}
+
+.transaction-text{
+  padding: 30px 0 0 10px;
+  font-size: 22px;
+  border-bottom: 1px solid gray;
+  height: 100%;
+}
+
+.delete-transaction-btn{
+  font-size: 15px;
+  border-radius: 20px;
+  padding: 0px;
+  width: 30px;
+  background-color: transparent;
+  border: 1px solid #61dafb;
+}
+
+
+
+/******** NEW ENVELOPPE ********/
+.label{
+  font-size: 25px;
+  
+}
+
+.input{
+  margin: 20px;
+  height: 28px;
+  border-radius: 7px;
+
+}
+
+.button{
+  font-size: 20px;
+  margin-top: 30px;
+  padding: 10px 15px;
+  background-color: #61dafb;
+  border: none;
+  color: #026682;
+  border-radius: 6px;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.form-div{
+  text-align: center;
+}
+
