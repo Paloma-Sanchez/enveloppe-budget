@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loadAllEnveloppes } from "../Features/EnveloppeList/enveloppeListSlice";
 
 export const Form = () => {
     const [name, setName] = useState('');
     const [budget, setBudget] = useState(0);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -15,9 +18,11 @@ export const Form = () => {
                 budget : budget})
         };
         fetch('http://localhost:4000/newEnveloppe', requestOptions)
-            .catch((error) => console.log(error));
+        .then(() => dispatch(loadAllEnveloppes))
+        .then(() => navigate('/'))   
+        .catch((error) => console.log(error));
        
-        navigate('/')
+        
     }
 
     return(

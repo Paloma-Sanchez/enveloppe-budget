@@ -17,7 +17,7 @@ export const TransactionList = ({env_id}) => {
             <>
                 <p className="transaction-text" key={index}>{transaction.description}</p>
                 <p className="transaction-text" key={index*10+1}>${transaction.amount}</p>
-                <DeleteTransactionButton trans_id = {transaction.id}/>
+                <DeleteTransactionButton trans_id = {transaction.id} env_id = {env_id}/>
             </>
         )
     })

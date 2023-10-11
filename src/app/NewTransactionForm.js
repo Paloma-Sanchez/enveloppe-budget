@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loadTransactionsByEnveloppeId } from "../Features/TransactionList/transactionListSlice";
 
 export const NewTransactionForm = ({env_id, budget}) => {
     const [description, setDescription] = useState('');
     const [amount, setAmount] = useState();
-    const [addActivated, setAddActivated] = useState(false)
+    const [addActivated, setAddActivated] = useState(false);
+    const dispatch = useDispatch();
 
     const onSubmit = (e) => {
         
@@ -15,7 +18,8 @@ export const NewTransactionForm = ({env_id, budget}) => {
             body: JSON.stringify({ budget: budget, description: description, amount : amount})
         };
         fetch(`http://localhost:4000/enveloppes/${env_id}`, requestOptions)
-            .catch((error) => console.log(error));
+        .then(() => dispatch(loadTransactionsByEnveloppeId(env_id)) )   
+        .catch((error) => console.log(error));
         setAddActivated(!addActivated);
     }
 

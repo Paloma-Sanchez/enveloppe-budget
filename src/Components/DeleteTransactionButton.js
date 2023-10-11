@@ -1,8 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loadTransactionsByEnveloppeId } from "../Features/TransactionList/transactionListSlice";
 
-export const DeleteTransactionButton = ({trans_id}) => {
+export const DeleteTransactionButton = ({trans_id, env_id}) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleClick = () => {
         const requestOptions = {
@@ -10,9 +13,10 @@ export const DeleteTransactionButton = ({trans_id}) => {
             headers: { 'Content-Type': 'application/json' }
         };
         fetch(`http://localhost:4000/enveloppes/transactions/${trans_id}`, requestOptions)
-            .catch((error) => console.log(error));
+        .then(dispatch(loadTransactionsByEnveloppeId(env_id)))    
+        .catch((error) => console.log(error));
         
-        navigate('/');
+        //navigate('/');
     }
 
     return(
