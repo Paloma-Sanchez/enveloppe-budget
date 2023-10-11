@@ -22,7 +22,7 @@ export const EnveloppeList = () => {
     
    const publicEnveloppes = allEnveloppes.map((envel) => {
         return(
-            <Link to={`/${envel.name}`} className='link' >
+            <Link to={`/${envel.name}`} className='link grid-item'  >
                 <Enveloppe title = {envel.name} amount = {envel.budget}/> 
             </Link>
         )

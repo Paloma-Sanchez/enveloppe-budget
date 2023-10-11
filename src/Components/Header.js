@@ -6,8 +6,8 @@ export const Header = () => {
     return(
         <>
             <div className='App-header'>
-                <NavLink to = '/' className="navlink"> Home</NavLink>
-                <NavLink to = '/newEnveloppe' className= "navlink">Create a New Enveloppe</NavLink>
+                <NavLink to = '/' className= {({isActive}) => isActive?'activeNavlink' : "navlink"} > Home</NavLink>
+                <NavLink to = '/newEnveloppe' className= {({isActive}) => isActive?'activeNavlink' : "navlink"}>Create a New Enveloppe</NavLink>
             </div>
             <Outlet/>
                 

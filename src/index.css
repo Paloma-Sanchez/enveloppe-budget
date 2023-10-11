@@ -31,6 +31,12 @@ code {
   padding: 0 25px;
 }
 
+.activeNavlink{
+  color: #1eb3dc;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0 25px;
+}
 
 /******** HOME ********/
 
@@ -53,15 +59,26 @@ code {
 .grid-container{
   max-width: 80%;
   margin: 0 auto;
+  padding-bottom: 30px;
 }
 
 .grid{
   display: grid;
   grid-template-columns: 1fr 1fr ;
   gap: 15px;
-  
   justify-items: center;
+  text-align: center;
   
+}
+
+.grid-item{
+  border: double 4px transparent;
+  border-radius: 80px;
+  background-image: linear-gradient(white, white), radial-gradient(circle at top left, rgb(0, 166, 255),#3020ff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  width: 100%;
+  border-radius: 5px;
 }
 
 .link{
@@ -99,6 +116,13 @@ code {
   font-weight: bold;
   font-style: italic;
   text-decoration: underline;
+  cursor: pointer;
+}
+
+.env-detail-header{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
 }
 
 /******** TRANSACTIONS ********/
@@ -142,6 +166,7 @@ code {
   width: 30px;
   background-color: transparent;
   border: 1px solid #61dafb;
+  cursor: pointer;
 }
 
 
@@ -161,12 +186,13 @@ code {
 
 .button{
   font-size: 20px;
-  margin-top: 30px;
+  margin: 30px;
   padding: 10px 15px;
   background-color: #61dafb;
   border: none;
   color: #026682;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 
